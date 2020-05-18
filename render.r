@@ -26,12 +26,6 @@ points(km$centers, pch=16)
 title(paste("Vinyl-methyl distances for", num_datasets, "heme structures"))
 dev.off()
 
-tooltips <- paste(d$Filename,"<br />x: ", d$CBC.CMC, "<br />y: ", d$CBB.CMB)
-urls <- paste("uglymol.html?id=",d$Filename)
-library(scatterD3)
-scatterD3(d$CBC.CMC, d$CBB.CMB,
-    xlab="||CBC - CMC|| (Å)",
-    ylab="||CBB - CMB|| (Å)",
-    point_opacity = 0.3,
-    tooltip_text=tooltips,
-    url_var=urls)
+# Create interactive html
+library(rmarkdown)
+rmarkdown::render("../heme_explorer.Rmd", output_file="analysis/index.html")

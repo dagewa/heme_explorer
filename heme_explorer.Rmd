@@ -1,0 +1,19 @@
+---
+title: "Heme explorer"
+output: html_document
+---
+
+`r num_datasets` structures of heme downloaded from the PDB
+
+```{r, echo=FALSE, fig.width=10, fig.height=7}
+library(scatterD3)
+tooltips <- paste(d$Filename,"<br />x: ", d$CBC.CMC, "<br />y: ", d$CBB.CMB)
+urls <- paste("uglymol.html?id=",d$Filename)
+scatterD3(d$CBC.CMC, d$CBB.CMB,
+    xlab="||CBC - CMC|| (Å)",
+    ylab="||CBB - CMB|| (Å)",
+    point_opacity=0.3,
+    col_var=km$cluster,
+    tooltip_text=tooltips,
+    url_var=urls)
+```
