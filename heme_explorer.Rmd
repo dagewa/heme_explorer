@@ -5,14 +5,14 @@ output: html_document
 
 `r num_datasets` structures of heme with a resolution
 of Å of better from the PDB. Classified according to C-C distances in
-neighbouring vinyl and methyl groups
+neighbouring vinyl and methyl groups.
 
 Use the mousewheel to zoom. Click on a point to see the structure.
 
 ```{r, echo=FALSE, fig.width=10, fig.height=7}
 library(scatterD3)
 tooltips <- paste(d$Filename,"<br />x: ", d$CBC.CMC, "<br />y: ", d$CBB.CMB)
-urls <- paste("uglymol.html?id=",d$Filename)
+urls <- paste("uglymol/index.html?id=",d$Filename, sep="")
 col_var <- km$size[km$cluster]
 scatterD3(d$CBC.CMC, d$CBB.CMB,
     xlab="||CBC - CMC|| (Å)",

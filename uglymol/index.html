@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Heme test-</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta name="theme-color" content="#333333">
+  <link rel="stylesheet" href="viewer.css">
+
+  <script src="uglymol.js"></script>
+  <!--script type="module" src="src/mtz.js"></script-->
+
+</head>
+<body style="background-color: black">
+  <div id="viewer"></div>
+  <header id="hud" onmousedown="event.stopPropagation();"
+                   ondblclick="event.stopPropagation();"></header>
+  <footer id="help"></footer>
+  <div id="inset"></div>
+  <script>
+    V = new UM.Viewer({viewer: "viewer", hud: "hud", help: "help"});
+
+    function load_from_pdbe(id, callback) {
+      //V.load_pdb('https://www.ebi.ac.uk/pdbe/entry-files/pdb' + id + '.ent', {},
+      //           function () {
+      //    UM.load_maps_from_mtz(G, V,
+      //      'https://www.ebi.ac.uk/pdbe/coordinates/files/' + id + '_map.mtz',
+      //      null, callback);
+      //});
+      V.load_pdb('https://www.ebi.ac.uk/pdbe/entry-files/pdb' + id + '.ent', {});
+    }
+
+    var id_match = window.location.href.match(/[?&]id=([a-z0-9]{4})_HEM_([0-9])_([A-Z]+)_([0-9]+).*/);
+    if (id_match) {
+        console.log(id_match[1]);
+        console.log(id_match[2]);
+        console.log(id_match[3]);
+        console.log(id_match[4]);
+        V.hud(id_match[1]);
+        load_from_pdbe(id_match[1].toLowerCase());
+    } else {
+        V.hud('Nothing here');
+    }
+
+    //V.request_render();
+  </script>
+</body>
+</html>
