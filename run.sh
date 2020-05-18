@@ -14,9 +14,9 @@ fi
 # Analyse structures
 mkdir -p analysis
 cd analysis
-ccp4-python ../classify.py ../heme > heme_distances.txt
-grep -v "Can't" heme_distances.txt > heme_distances_readable.txt
-Rscript --vanilla ../render.r heme_distances_readable.txt
+ccp4-python ../classify.py ../heme > heme_data.txt
+grep -v "Can't" heme_data.txt > heme_data_readable.txt
+Rscript --vanilla ../render.r heme_data_readable.txt
 cd ..
 
 # Make website

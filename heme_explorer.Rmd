@@ -12,7 +12,8 @@ Use the mousewheel to zoom. Click on a point to see the structure.
 ```{r, echo=FALSE, fig.width=10, fig.height=7}
 library(scatterD3)
 tooltips <- paste(d$Filename,"<br />x: ", d$CBC.CMC, "<br />y: ", d$CBB.CMB)
-urls <- paste("uglymol/index.html?id=",d$Filename, sep="")
+posn <- paste(d$Fe.x, d$Fe.y, d$Fe.z, sep=",")
+urls <- paste("uglymol/index.html?id=", d$Filename, "#xyz=", posn, sep="")
 col_var <- km$size[km$cluster]
 scatterD3(d$CBC.CMC, d$CBB.CMB,
     xlab="||CBC - CMC|| (Å)",
