@@ -3,9 +3,9 @@ title: "Heme explorer"
 output: html_document
 ---
 
-`r num_datasets` structures of heme with a resolution
-of Å of better from the PDB. Classified according to C-C distances in
-neighbouring vinyl and methyl groups.
+Here are `r num_datasets` structures of heme with a resolution
+of 1.8 Å or better, taken from the PDB. These structures are classified
+according to C-C distances in neighbouring vinyl and methyl groups.
 
 Use the mousewheel to zoom. Click on a point to see the structure.
 
